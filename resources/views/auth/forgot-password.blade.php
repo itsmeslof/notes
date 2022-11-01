@@ -1,34 +1,51 @@
 <x-guest-layout>
-    <x-auth-card>
-        <x-slot name="logo">
-            <a href="/">
-                <x-application-logo class="w-20 h-20 fill-current text-gray-500" />
-            </a>
-        </x-slot>
-
-        <div class="mb-4 text-sm text-gray-600">
-            {{ __('Forgot your password? No problem. Just let us know your email address and we will email you a password reset link that will allow you to choose a new one.') }}
+    <x-auth-card title="Forgot your password?">
+        <div class="mb-6 text-sm text-gray-600">
+            {{ __('No problem. Just let us know your email address and we\'ll send you a link to reset your password.') }}
         </div>
 
         <!-- Session Status -->
-        <x-auth-session-status class="mb-4" :status="session('status')" />
+        <x-auth-session-status
+            class="mb-4"
+            :status="session('status')"
+        />
 
-        <form method="POST" action="{{ route('password.email') }}">
+        <form
+            method="POST"
+            action="{{ route('password.email') }}"
+        >
             @csrf
 
             <!-- Email Address -->
             <div>
-                <x-input-label for="email" :value="__('Email')" />
+                <x-forms.label
+                    for="email"
+                    :value="__('Email')"
+                />
 
-                <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autofocus />
+                <x-forms.text-input
+                    id="email"
+                    class="block mt-1 w-full"
+                    type="email"
+                    name="email"
+                    :value="old('email')"
+                    required
+                    autofocus
+                />
 
-                <x-input-error :messages="$errors->get('email')" class="mt-2" />
+                <x-input-error
+                    :messages="$errors->get('email')"
+                    class="mt-2"
+                />
             </div>
 
-            <div class="flex items-center justify-end mt-4">
-                <x-primary-button>
-                    {{ __('Email Password Reset Link') }}
-                </x-primary-button>
+            <div class="flex items-center mt-12">
+                <x-buttons.primary class="mr-4">
+                    Email Password Reset Link
+                </x-buttons.primary>
+                <x-links.default href="{{ url()->previous() }}">
+                    Cancel
+                </x-links.default>
             </div>
         </form>
     </x-auth-card>
