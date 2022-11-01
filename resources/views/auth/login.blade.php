@@ -79,7 +79,7 @@
                 </x-buttons.primary>
             </div>
 
-            <div class="w-full h-[1px] bg-gray-200 my-6"></div>
+            <x-h-divider height="20" />
 
             <div class="space-x-4 flex items-center justify-end">
                 @if (Route::has('password.request'))
