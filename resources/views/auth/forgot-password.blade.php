@@ -43,9 +43,9 @@
                 <x-buttons.primary class="mr-4">
                     Email Password Reset Link
                 </x-buttons.primary>
-                <x-links.default href="{{ url()->previous() }}">
+                <x-links.anchor href="{{ url()->previous() }}">
                     Cancel
-                </x-links.default>
+                </x-links.anchor>
             </div>
         </form>
     </x-auth-card>

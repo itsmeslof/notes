@@ -103,12 +103,9 @@
             <div class="w-full h-[1px] bg-gray-200 my-6"></div>
 
             <div class="flex justify-end">
-                <x-links.default
-                    class="underline text-sm text-gray-600 hover:text-gray-900"
-                    href="{{ route('login') }}"
-                >
+                <x-links.anchor href="{{ route('login') }}">
                     Already have an account?
-                </x-links.default>
+                </x-links.anchor>
             </div>
 
         </form>
