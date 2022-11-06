@@ -35,7 +35,6 @@ abstract class BaseLink extends Component
         'lg' => 'text-lg'
     ];
 
-
     /**
      * Get the class list for the specific link type.
      *
