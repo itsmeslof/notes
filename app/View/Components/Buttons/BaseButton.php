@@ -11,7 +11,7 @@ abstract class BaseButton extends Component
      *
      * @var string
      */
-    const BASE_CLASSES = 'inline-flex items-center rounded-md focus:outline-none focus-visible:border-emerald-300 focus-visible:ring ring-emerald-300 transition ease-in-out duration-150';
+    const BASE_CLASSES = 'inline-flex items-center focus:outline-none focus-visible:border-emerald-300 focus-visible:ring ring-emerald-300 transition ease-in-out duration-150';
 
     /**
      * The css classes for buttons styled as buttons.
