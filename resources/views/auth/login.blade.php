@@ -66,7 +66,7 @@
                     <input
                         id="remember_me"
                         type="checkbox"
-                        class="rounded border-gray-300 text-emerald-600 shadow-sm focus:border-emerald-300 focus:ring focus:ring-emerald-200 focus:ring-opacity-50"
+                        class="rounded border-gray-300 text-emerald-600 shadow-sm focus:border-emerald-300 focus:ring focus:ring-emerald-300 focus:ring-opacity-50"
                         name="remember"
                     >
                     <span class="ml-2 font-medium text-sm text-gray-600">{{ __('Remember me') }}</span>
@@ -83,14 +83,14 @@
 
             <div class="space-x-4 flex items-center justify-end">
                 @if (Route::has('password.request'))
-                    <x-links.default href="{{ route('password.request') }}">
+                    <x-links.anchor href="{{ route('password.request') }}">
                         Forgot your password?
-                    </x-links.default>
+                    </x-links.anchor>
                 @endif
 
-                <x-links.default href="{{ route('register') }}">
+                <x-links.anchor href="{{ route('register') }}">
                     Don't have an account?
-                </x-links.default>
+                </x-links.anchor>
             </div>
 
         </form>

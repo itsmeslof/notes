@@ -19,7 +19,7 @@ class NotebookPolicy
      */
     public function view(User $user, Notebook $notebook)
     {
-        return $notebook->user_id == $user->id;
+        return ($user->is_admin || $notebook->user_id == $user->id);
     }
 
     /**

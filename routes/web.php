@@ -24,8 +24,8 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::prefix('/notebooks/{notebook}')->as('notebooks.')->group(function () {
         Route::patch('/restore', [NotebookController::class, 'restore'])->name('restore')->withTrashed();
 
-        Route::post('/bookmark', [BookmarkController::class, 'store'])->name('bookmark.store');
-        Route::delete('/bookmark/destroy', [BookmarkController::class, 'destroy'])->name('bookmark.destroy');
+        Route::post('/bookmark', [BookmarkController::class, 'store'])->name('bookmark.store')->withTrashed();
+        Route::delete('/bookmark/destroy', [BookmarkController::class, 'destroy'])->name('bookmark.destroy')->withTrashed();
     });
 
     // Route::resource('notebooks.pages', NotebookPageController::class)->scoped([
