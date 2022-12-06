@@ -26,8 +26,6 @@
         />
     </x-slot>
 
-    <hr />
-
     <x-notebooks.pages.page-content-output
         x-show="!isEditing"
         :page="$page"
