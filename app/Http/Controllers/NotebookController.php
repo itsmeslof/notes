@@ -112,8 +112,7 @@ class NotebookController extends Controller
     {
         $this->authorize('delete', $notebook);
 
-        $notebook->delete();
-
+        $this->notebookService->destroy($notebook);
         session()->flash('status', 'Notebook deleted!');
 
         return redirect()->route('notebooks.index');
@@ -123,10 +122,7 @@ class NotebookController extends Controller
     {
         $this->authorize('restore', $notebook);
 
-        if ($notebook->trashed()) {
-            $notebook->restore();
-        }
-
+        $notebook->restore();
         session()->flash('status', 'Notebook restored!');
 
         return redirect()->route('notebooks.show', $notebook);

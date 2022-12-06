@@ -1,12 +1,14 @@
-<x-app-layout size="max-w-xl">
+<x-app-layout>
 
     <x-slot name="header">
-        <h2 class="font-semibold text-2xl text-gray-800 leading-tight w-full text-center">
-            {{ __('Create Notebook') }}
-        </h2>
+        <div class="w-full flex space-x-4 justify-center items-center">
+            <x-dashboard-heading-text size="2xl">
+                Create Notebook
+            </x-dashboard-heading-text>
+        </div>
     </x-slot>
 
-    <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg border border-gray-300 p-8">
+    <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg border border-gray-300 p-8 max-w-xl mx-auto">
         <form
             action="{{ route('notebooks.store') }}"
             method="POST"

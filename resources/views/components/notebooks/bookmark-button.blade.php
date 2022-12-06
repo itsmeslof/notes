@@ -1,22 +1,21 @@
 @props(['notebook' => null])
 
-@php
-    $route = $notebook->bookmarked ? 'notebooks.bookmark.destroy' : 'notebooks.bookmark.store';
-    $method = $notebook->bookmarked ? 'DELETE' : 'POST';
-@endphp
+<form
+    action="{{ route('notebooks.bookmark.update', $notebook) }}"
+    class="flex"
+    method="POST"
+>
+    @csrf
+    @method('PATCH')
 
-@if ($notebook)
-    <form
-        action="{{ route($route, $notebook) }}"
-        class="flex"
-        method="POST"
+    <input
+        type="hidden"
+        name="bookmarked"
+        value="{{ $notebook->bookmarked ? '0' : '1' }}"
     >
-        @csrf
-        @method($method)
 
-        <x-buttons.bookmark
-            size="sm"
-            :bookmarked="$notebook->bookmarked"
-        />
-    </form>
-@endif
+    <x-buttons.bookmark
+        size="sm"
+        :bookmarked="$notebook->bookmarked"
+    />
+</form>

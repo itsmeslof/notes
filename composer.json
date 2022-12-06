@@ -12,6 +12,7 @@
         "laravel/framework": "^9.19",
         "laravel/sanctum": "^3.0",
         "laravel/tinker": "^2.7",
+        "livewire/livewire": "^2.10",
         "n0sz/commonmark-marker-extension": "^1.0",
         "spatie/commonmark-shiki-highlighter": "^2.1",
         "vinkla/hashids": "^10.0"

@@ -3,23 +3,20 @@
 namespace App\Models;
 
 use App\Traits\HasHashID;
-use App\Traits\BelongsToUser;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Notebook extends Model
+class NotebookPage extends Model
 {
-    use HasFactory, BelongsToUser, SoftDeletes, HasHashID;
+    use HasFactory, SoftDeletes, HasHashID;
 
     public function generateHashIDFromFields(): array
     {
-        return [$this->id];
+        return [$this->notebook->id, $this->id];
     }
-
-    // protected $with = ['pages'];
 
     /**
      * The attributes that are mass assignable.
@@ -28,19 +25,30 @@ class Notebook extends Model
      */
     protected $fillable = [
         'name',
-        'bookmarked',
-        'hashid',
+        'content',
+        'hash_id',
+        'notebook_id',
         'user_id',
     ];
 
     /**
-     * Get the pages belonging to this notebook.
+     * Get the user that this page belongs to.
      *
-     * @return Illuminate\Database\Eloquent\Relations\HasMany
+     * @return Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function pages(): HasMany
+    public function user(): BelongsTo
     {
-        return $this->hasMany(NotebookPage::class);
+        return $this->notebook->user();
+    }
+
+    /**
+     * Get the Notebook that the page belongs to.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function notebook(): BelongsTo
+    {
+        return $this->belongsTo(Notebook::class)->withTrashed();
     }
 
     // Temporary

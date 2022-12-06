@@ -5,17 +5,19 @@
     </x-slot>
 
     <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('My Notebooks') }}
-        </h2>
+        <div class="flex justify-between items-center">
+            <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+                {{ __('My Notebooks') }}
+            </h2>
 
-        <x-links.primary
-            size="sm"
-            href="{{ route('notebooks.create') }}"
-        >
-            <x-svg.plus-icon class="mr-2" />
-            New Notebook
-        </x-links.primary>
+            <x-links.primary
+                size="sm"
+                href="{{ route('notebooks.create') }}"
+            >
+                <x-svg.plus-icon class="mr-2" />
+                New Notebook
+            </x-links.primary>
+        </div>
     </x-slot>
 
     <div

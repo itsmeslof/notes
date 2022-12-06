@@ -19,9 +19,17 @@
         rel="stylesheet"
         href="https://fonts.bunny.net/css2?family=Nunito:wght@400;500;600;700&display=swap"
     >
-
     <!-- Scripts -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
+
+    {{-- <script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio,line-clamp"></script> --}}
+
+    <link
+        rel="stylesheet"
+        href="https://unpkg.com/@tailwindcss/typography@0.4.x/dist/typography.min.css"
+    >
+
+    @livewireStyles
 </head>
 
 @props(['alerts', 'header', 'size' => 'max-w-7xl'])
@@ -30,16 +38,17 @@
     <div class="min-h-screen bg-gray-100">
         @include('layouts.navigation')
 
-        <div class="{{ $size }} mx-auto py-10 space-y-10">
+        <div
+            class="{{ $size }} mx-auto py-10 space-y-10"
+            {{ $attributes }}
+        >
             @if (isset($alerts))
                 {{ $alerts }}
             @endif
 
             @if (isset($header))
                 <header>
-                    <div class="flex justify-between items-center">
-                        {{ $header }}
-                    </div>
+                    {{ $header }}
                 </header>
             @endif
 
@@ -48,6 +57,9 @@
             </main>
         </div>
     </div>
+
+    @livewireScripts
+    @stack('scripts')
 </body>
 
 </html>
