@@ -51,6 +51,10 @@ class EditPageContent extends Component
 
     public function enterPreviewMode()
     {
+        if ($this->activeTab === self::TAB_PREVIEW) {
+            return;
+        }
+
         $this->setTab(self::TAB_PREVIEW);
         $this->createPreview($this->editInput);
     }
