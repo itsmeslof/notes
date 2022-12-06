@@ -4,6 +4,8 @@ namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasManyThrough;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
@@ -20,6 +22,8 @@ class User extends Authenticatable
     protected $fillable = [
         'name',
         'email',
+        'is_admin',
+        'is_banned',
         'password',
     ];
 
@@ -41,4 +45,19 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    /**
+     * Get the notebooks belonging to the user.
+     *
+     * @return Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function notebooks(): HasMany
+    {
+        return $this->hasMany(Notebook::class);
+    }
+
+    public function pages(): HasManyThrough
+    {
+        return $this->hasManyThrough(NotebookPage::class, Notebook::class);
+    }
 }

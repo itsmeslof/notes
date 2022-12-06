@@ -82,9 +82,9 @@
                 <x-buttons.primary class="mr-4">
                     Reset Password
                 </x-buttons.primary>
-                <x-links.default href="/">
+                <x-links.anchor href="/">
                     Cancel
-                </x-links.default>
+                </x-links.anchor>
             </div>
         </form>
     </x-auth-card>
