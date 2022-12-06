@@ -92,3 +92,8 @@ h6:hover .heading-permalink
 #markdownPreviewOutput .table-of-contents {
     display: none;
 }
+
+.prose > ol > li > :last-child,
+.prose > ol > li > :first-child {
+    margin: 0px !important;
+}
