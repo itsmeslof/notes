@@ -7,7 +7,6 @@ use App\Models\Notebook;
 use App\Models\NotebookPage;
 use App\Services\NotebookPageService;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
-use Illuminate\Support\Facades\Log;
 use Livewire\Component;
 
 class EditPageContent extends Component
@@ -62,7 +61,6 @@ class EditPageContent extends Component
     public function setTab(string $tab)
     {
         if (!in_array($tab, ['edit', 'preview'])) {
-            Log::error("Invalid tab: {$tab}");
             return;
         }
 
