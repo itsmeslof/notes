@@ -2,7 +2,7 @@
     x-data="data()"
     x-init="extractToc()"
     @enter-edit-mode.window="isEditing = true"
-    @discard-changes.window="discardChanges()"
+    @discard-changes.window="isEditing = false"
 >
 
     <x-slot name="alerts">
@@ -37,24 +37,20 @@
         :page="$page"
     />
 
-    @push('scripts')
-        <script>
-            const data = function() {
-                return {
-                    isEditing: false,
-                    discardChanges: function() {
-                        this.isEditing = false;
-                    },
-                    extractToc: function() {
-                        let tocElem = document.querySelector('.table-of-contents');
-                        tocElem.parentNode.removeChild(tocElem);
-
-                        let tocPlaceholder = document.querySelector('#toc-placeholder');
-                        tocPlaceholder.appendChild(tocElem);
-                    }
-                }
+    <script>
+        const data = () => {
+            return {
+                isEditing: false
             }
-        </script>
-    @endpush
+        };
+
+        function extractToc() {
+            let tocElem = document.querySelector('.table-of-contents');
+            tocElem.parentNode.removeChild(tocElem);
+
+            let tocPlaceholder = document.querySelector('#toc-placeholder');
+            tocPlaceholder.appendChild(tocElem);
+        }
+    </script>
 
 </x-app-layout>
