@@ -22,6 +22,15 @@
                         <x-svg.user-icon class="mr-2" />
                         Account Settings
                     </x-nav-link>
+                    @if (auth()->user()?->is_admin ?? false)
+                        <x-nav-link
+                            href="{{ route('admin.site-settings.index') }}"
+                            :active="request()->routeIs('admin.*')"
+                        >
+                            <x-svg.user-icon class="mr-2" />
+                            Admin Area
+                        </x-nav-link>
+                    @endif
                 </div>
             </div>
 
