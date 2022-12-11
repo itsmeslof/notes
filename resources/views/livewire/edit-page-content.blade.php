@@ -16,10 +16,13 @@
                 class="border border-b-0 px-3 py-1 text-sm rounded-t-md {{ $activeTab === 'preview' ? 'bg-emerald-600 border-transparent text-white' : 'bg-white border-gray-300' }}"
                 wire:click="enterPreviewMode()"
             >
-                Preview <span
+                Preview
+                <span
                     wire:loading.delay
                     wire:target="enterPreviewMode"
-                >Loading...</span>
+                >
+                    Loading...
+                </span>
             </button>
         </div>
 

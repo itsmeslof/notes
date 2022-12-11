@@ -37,6 +37,9 @@
 <body class="font-sans antialiased">
     <div class="min-h-screen bg-gray-100">
         @include('layouts.navigation')
+        @if (request()->routeIs('admin.*'))
+            @include('layouts.admin.sub-navigation')
+        @endif
 
         <div
             class="{{ $size }} mx-auto py-10 space-y-10"
