@@ -1,9 +1,9 @@
-@props(['page'])
+@props(['page', 'renderedOutput'])
 
 <div
     id="markdownOutput"
     class="bg-white border rounded-md"
-    {{ $attributes }}
+    {{ $attributes->merge() }}
 >
     <div class="border-b p-4 flex justify-between">
         <x-notebooks.pages.heading-text :$page />

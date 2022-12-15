@@ -1,6 +1,9 @@
 <?php
 
 use App\Http\Controllers\StaticPageController;
+use App\Models\Notebook;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -18,8 +21,8 @@ Route::get('/', function () {
     return redirect()->route('notebooks.index');
 });
 
-Route::get('/pages/{static_page:slug}', [StaticPageController::class, 'show'])->name('static.show');
-
 require __DIR__ . '/notebooks.php';
 require __DIR__ . '/admin.php';
 require __DIR__ . '/auth.php';
+
+Route::get('/pages/{page:slug}', [StaticPageController::class, 'show'])->name('page.show');

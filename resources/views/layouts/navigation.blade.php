@@ -7,7 +7,7 @@
         <div class="flex justify-between h-16">
             <div class="flex">
                 <!-- Navigation Links -->
-                <div class="hidden space-x-8 sm:flex">
+                <div class="hidden space-x-8 sm:flex items-center">
                     <x-nav-link
                         :href="route('notebooks.index')"
                         :active="request()->routeIs('notebooks.index')"
@@ -22,6 +22,42 @@
                         <x-svg.user-icon class="mr-2" />
                         Account Settings
                     </x-nav-link>
+                    @if ($staticPages->count())
+                        <x-dropdown
+                            align="left"
+                            width="48"
+                        >
+                            <x-slot name="trigger">
+                                <button
+                                    class="inline-flex items-center text-md font-medium leading-5 text-gray-400 hover:text-gray-700 focus:outline-none focus:text-gray-700 transition duration-150 ease-in-out"
+                                >
+                                    <x-nav-link>Pages</x-nav-link>
+
+                                    <div class="ml-1">
+                                        <svg
+                                            class="fill-current h-4 w-4"
+                                            xmlns="http://www.w3.org/2000/svg"
+                                            viewBox="0 0 20 20"
+                                        >
+                                            <path
+                                                fill-rule="evenodd"
+                                                d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                                                clip-rule="evenodd"
+                                            />
+                                        </svg>
+                                    </div>
+                                </button>
+                            </x-slot>
+
+                            <x-slot name="content">
+                                <div>
+                                    @foreach ($staticPages as $page)
+                                        <x-dropdown-link :href="route('page.show', $page)">{{ $page->title }}</x-dropdown-link>
+                                    @endforeach
+                                </div>
+                            </x-slot>
+                        </x-dropdown>
+                    @endif
                     @if (auth()->user()?->is_admin ?? false)
                         <x-nav-link
                             href="{{ route('admin.site-settings.index') }}"
