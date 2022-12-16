@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Models\StaticPage;
 use App\Settings;
 use Illuminate\Support\ServiceProvider;
 
@@ -28,7 +29,8 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        view()->share('user', auth()->user());
+        // view()->share('user', auth()->user());
+        view()->share('staticPages', StaticPage::all());
     }
 
     public function loadHelpers()

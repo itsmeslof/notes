@@ -32,14 +32,14 @@ class NotebookPageService
      */
     public function getRenderedOutput(NotebookPage $page): string
     {
-        $output = $this->getOutputCache($page);
+        // TODO: convert this to a CacheService
 
-        if (!is_null($output)) {
-            return $output;
-        }
-
-        $output = CustomMarkdownConverter::convert($page->content)->getContent();
-        $this->setOutputCache($page, $output);
+        $output = Cache::rememberForever(
+            $this->getCacheKey($page),
+            function () use ($page) {
+                return CustomMarkdownConverter::convert($page->content)->getContent();
+            }
+        );
 
         return $output;
     }
