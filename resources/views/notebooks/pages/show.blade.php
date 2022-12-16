@@ -1,8 +1,7 @@
 <x-app-layout
-    x-data="data()"
-    x-init="extractToc()"
-    @enter-edit-mode.window="isEditing = true"
-    @discard-changes.window="isEditing = false"
+    x-data="{ isEditing: false, notebookHash: '{{ $notebook->hashid }}', pageHash: '{{ $page->hashid }}' }"
+    @enter-edit-mode.window="isEditing = true;"
+    @mde-discard-changes.window="isEditing = false;"
 >
 
     <x-slot name="alerts">
@@ -26,31 +25,15 @@
         />
     </x-slot>
 
-    <x-notebooks.pages.page-content-output
-        x-show="!isEditing"
-        :page="$page"
-        :rendered-output="$renderedOutput"
-    />
+    <div x-show="!isEditing">
+        <x-markdown-output-panel
+            :output="$renderedOutput"
+            :heading="$page->name"
+        />
+    </div>
 
-    <livewire:edit-page-content
-        :notebook="$notebook"
-        :page="$page"
-    />
-
-    <script>
-        const data = () => {
-            return {
-                isEditing: false
-            }
-        };
-
-        function extractToc() {
-            let tocElem = document.querySelector('.table-of-contents');
-            tocElem.parentNode.removeChild(tocElem);
-
-            let tocPlaceholder = document.querySelector('#toc-placeholder');
-            tocPlaceholder.appendChild(tocElem);
-        }
-    </script>
+    <div x-show="isEditing">
+        <livewire:notebooks.pages.markdown-editor :mdContent="$page->content" />
+    </div>
 
 </x-app-layout>

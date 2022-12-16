@@ -33,7 +33,7 @@
         >
             <x-buttons.secondary
                 size="sm"
-                @click="$dispatch('discard-changes')"
+                @click="$dispatch('mde-discard-changes')"
             >
                 {{-- <x-svg.settings-cog-icon class="mr-2" /> --}}
                 Discard Changes
