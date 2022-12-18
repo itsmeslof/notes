@@ -5,6 +5,7 @@ namespace App\Services;
 use App\CustomMarkdownConverter;
 use App\Models\StaticPage;
 use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Facades\Log;
 
 class StaticPageService
 {
@@ -17,8 +18,11 @@ class StaticPageService
      */
     public function getRenderedOutput(StaticPage $page): string
     {
-        $output = Cache::rememberForever(
+        // return Cache::get($page->getCacheKey(), 'CACHE NOT FOUND');
+
+        $output = Cache::remember(
             $page->getCacheKey(),
+            3600,
             fn () => CustomMarkdownConverter::convert($page->md_content)->getContent()
         );
 
@@ -35,9 +39,10 @@ class StaticPageService
      */
     public function cacheOutput(string $cacheKey, string $output): void
     {
-        Cache::forever(
+        Cache::put(
             $cacheKey,
-            $output
+            $output,
+            3600
         );
     }
 
@@ -47,5 +52,10 @@ class StaticPageService
         $page->save();
 
         $this->cacheOutput($page->getCacheKey(), $output);
+    }
+
+    public function invalidateCache(string $cacheKey)
+    {
+        Cache::forget($cacheKey);
     }
 }

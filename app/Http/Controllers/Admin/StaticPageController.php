@@ -6,7 +6,9 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreStaticPageRequest;
 use App\Http\Requests\UpdateStaticPageRequest;
 use App\Models\StaticPage;
+use App\Services\StaticPageService;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Cache;
 
 class StaticPageController extends Controller
 {
@@ -62,6 +64,7 @@ class StaticPageController extends Controller
 
     public function destroy(Request $request, StaticPage $page)
     {
+        Cache::forget($page->getCacheKey());
         $page->delete();
 
         session()->flash('status', 'Page deleted!');

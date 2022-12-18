@@ -60,4 +60,9 @@ class NotebookPage extends Model
             }
         );
     }
+
+    public function getCacheKey(): string
+    {
+        return "output-{$this->id}";
+    }
 }

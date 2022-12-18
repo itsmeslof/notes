@@ -9,6 +9,7 @@ use App\Models\Notebook;
 use App\Models\NotebookPage;
 use App\Services\NotebookPageService;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Cache;
 
 class NotebookPageController extends Controller
 {
@@ -76,6 +77,8 @@ class NotebookPageController extends Controller
     public function destroy(Notebook $notebook, NotebookPage $page)
     {
         $this->authorize('delete', $page);
+
+        Cache::forget($page->getCacheKey());
 
         $this->notebookPageService->destroy($page);
         session()->flash('status', 'Page deleted!');

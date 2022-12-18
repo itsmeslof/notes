@@ -37,8 +37,9 @@ class NotebookPageService
     {
         // TODO: convert this to a CacheService
 
-        $output = Cache::rememberForever(
-            $this->getCacheKey($page),
+        $output = Cache::remember(
+            $page->getCacheKey(),
+            3600,
             function () use ($page) {
                 return CustomMarkdownConverter::convert($page->content)->getContent();
             }
@@ -57,7 +58,7 @@ class NotebookPageService
      */
     public function setOutputCache(NotebookPage $page, string $output): void
     {
-        Cache::put($this->getCacheKey($page), $output, 3600);
+        Cache::put($page->getCacheKey(), $output, 3600);
     }
 
     /**
@@ -69,18 +70,6 @@ class NotebookPageService
      */
     public function getOutputCache(NotebookPage $page): string|null
     {
-        return Cache::get($this->getCacheKey($page));
-    }
-
-    /**
-     * Cache the page's cache key.
-     *
-     * @param NotebookPage $page
-     *
-     * @return string
-     */
-    public function getCacheKey(NotebookPage $page): string
-    {
-        return "output-{$page->id}";
+        return Cache::get($page->getCacheKey());
     }
 }
