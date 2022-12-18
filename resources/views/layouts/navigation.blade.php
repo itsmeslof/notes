@@ -22,7 +22,7 @@
                         <x-svg.user-icon class="mr-2" />
                         Account Settings
                     </x-nav-link>
-                    @if ($staticPages->count())
+                    @if (isset($staticPages) && $staticPages->count())
                         <x-dropdown
                             align="left"
                             width="48"
