@@ -1,4 +1,12 @@
 <div>
+    <x-livewire-loading-spinner
+        wire:loading.delay
+        wire:target="save"
+    >
+        <p class="text-white">
+            Saving Page Content...
+        </p>
+    </x-livewire-loading-spinner>
     <div
         x-data="{
             originalContent: @js($mdContent),

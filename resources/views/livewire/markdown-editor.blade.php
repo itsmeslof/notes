@@ -1,4 +1,12 @@
 <div>
+    <x-livewire-loading-spinner
+        wire:loading.delay
+        wire:target="enterPreviewMode"
+    >
+        <p class="text-white">
+            Creating Page Preview...
+        </p>
+    </x-livewire-loading-spinner>
     <div
         x-data="{
             originalContent: @js($originalContent),
@@ -28,45 +36,7 @@
             </button>
         </div>
 
-        <div class="bg-red-200 relative">
-            <div
-                class="absolute top-0 bottom-0 left-0 right-0 bg-black/30 flex justify-center items-start py-10"
-                wire:loading.delay
-                wire:target="enterPreviewMode,save"
-            >
-                <div class="w-full flex flex-col space-y-4 justify-center items-center">
-                    <div class="lds-default">
-                        <div></div>
-                        <div></div>
-                        <div></div>
-                        <div></div>
-                        <div></div>
-                        <div></div>
-                        <div></div>
-                        <div></div>
-                        <div></div>
-                        <div></div>
-                        <div></div>
-                        <div></div>
-                    </div>
-                    <div>
-                        <p
-                            class="text-white"
-                            wire:loading.delay
-                            wire:target="save"
-                        >
-                            Saving Page Content...
-                        </p>
-                        <p
-                            class="text-white"
-                            wire:loading.delay
-                            wire:target="enterPreviewMode"
-                        >
-                            Creating Page Preview...
-                        </p>
-                    </div>
-                </div>
-            </div>
+        <div>
             @if ($activeTab === 'edit')
                 <textarea
                     class="bg-white border rounded-md border-emerald-600 border-2 rounded-tl-none w-full min-h-[400px]"
