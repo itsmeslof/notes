@@ -33,7 +33,12 @@ class StaticPageController extends Controller
     {
         $validated = $request->validated();
 
-        $page = StaticPage::create($validated);
+        $page = StaticPage::create(array_merge(
+            $validated,
+            [
+                'md_content' => "# {$validated['title']}"
+            ]
+        ));
 
         session()->flash('status', 'Page created!');
         return redirect()->route('admin.pages.show', $page);

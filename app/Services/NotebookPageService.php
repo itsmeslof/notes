@@ -14,6 +14,9 @@ class NotebookPageService
     {
         $page = $notebook->pages()->create(array_merge(
             $validatedData,
+            [
+                'content' => "# {$validatedData['name']}"
+            ]
         ));
         return $page;
     }
