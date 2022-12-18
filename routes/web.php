@@ -15,8 +15,8 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return redirect()->route('notebooks.index');
-});
+    return view('index');
+})->middleware('home_page.enabled');
 
 require __DIR__ . '/notebooks.php';
 require __DIR__ . '/admin.php';
