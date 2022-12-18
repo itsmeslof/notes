@@ -88,9 +88,11 @@
                     </x-links.anchor>
                 @endif
 
-                <x-links.anchor href="{{ route('register') }}">
-                    Don't have an account?
-                </x-links.anchor>
+                @if (settings()->get('enable_user_registration'))
+                    <x-links.anchor href="{{ route('register') }}">
+                        Don't have an account?
+                    </x-links.anchor>
+                @endif
             </div>
 
         </form>
