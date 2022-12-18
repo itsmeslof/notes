@@ -13,7 +13,7 @@ class SiteSettingsController extends Controller
     {
         $settings = [
             'enable_user_registration' => settings()->get('enable_user_registration', false),
-            'show_home_page' => settings()->get('show_home_page', false),
+            'show_home_page' => settings()->get('show_home_page', true),
         ];
 
         return view('admin.site-settings.index', [
