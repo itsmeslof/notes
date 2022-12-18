@@ -1,9 +1,6 @@
 <?php
 
 use App\Http\Controllers\StaticPageController;
-use App\Models\Notebook;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Route;
 
 /*
