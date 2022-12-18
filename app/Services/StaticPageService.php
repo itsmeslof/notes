@@ -5,7 +5,6 @@ namespace App\Services;
 use App\CustomMarkdownConverter;
 use App\Models\StaticPage;
 use Illuminate\Support\Facades\Cache;
-use Illuminate\Support\Facades\Log;
 
 class StaticPageService
 {
@@ -48,7 +47,5 @@ class StaticPageService
         $page->save();
 
         $this->cacheOutput($page->getCacheKey(), $output);
-
-        Log::info('Updated StaticPage content and updated the output cache!');
     }
 }

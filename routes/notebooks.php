@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\NotebookController;
 use App\Http\Controllers\NotebookPageController;
+use App\Http\Controllers\Notebooks\BookmarkController;
 use Illuminate\Support\Facades\Route;
 
 Route::middleware(['auth', 'verified'])->group(function () {

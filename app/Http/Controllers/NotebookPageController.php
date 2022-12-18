@@ -57,9 +57,6 @@ class NotebookPageController extends Controller
     {
         $this->authorize('view', $page);
 
-
-        // dd($this->notebookPageService->getRenderedOutput($page));
-
         return view('notebooks.pages.show', [
             'notebook' => $notebook,
             'page' => $page,
