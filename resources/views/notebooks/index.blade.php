@@ -35,7 +35,7 @@
             >
                 All Notebooks ({{ count($allNotebooks) }})
             </button>
-            <button
+            {{-- <button
                 class="font-medium border-b-2 hover:text-gray-600 -mb-[2px] pb-3 px-2 focus:outline-none focus-visible:border-emerald-300 focus-visible:ring ring-emerald-300 transition ease-in-out duration-150'"
                 :class="activeTab === 'bookmarks' ? 'border-emerald-500 text-gray-600' : 'border-transparent text-gray-400'"
                 @click="activeTab = 'bookmarks'"
@@ -55,7 +55,7 @@
                 @click="activeTab = 'trashed'"
             >
                 Trashed ({{ count($trashedNotebooks) }})
-            </button>
+            </button> --}}
         </div>
 
         <!-- Tab content -->
