@@ -20,15 +20,15 @@
         href="https://fonts.bunny.net"
     >
     <link
-        href="https://fonts.bunny.net/css?family=inter:400,500,600"
         rel="stylesheet"
-    />
+        href="https://fonts.bunny.net/css2?family=Nunito:wght@400;500;600;700&display=swap"
+    >
 
     <!-- Scripts -->
     @vite(['resources/css/app.css'])
 </head>
 
-<body class="bg-gray-100 antialiased px-10 space-y-16 border-t-[6px] border-emerald-600">
+<body class="bg-gray-100 font-sans antialiased px-10 space-y-16 border-t-[6px] border-emerald-600">
     <div class="flex justify-center">
         <div class="bg-emerald-600 inline-block rounded-b-xl px-16 py-4">
             <div class="flex items-center space-x-4 text-emerald-50">
