@@ -17,7 +17,7 @@ class CheckIfHomePageEnabled
     public function handle(Request $request, Closure $next)
     {
         if (!settings()->get('show_home_page')) {
-            return redirect('notebooks.index');
+            return redirect()->route('notebooks.index');
         }
 
         return $next($request);
