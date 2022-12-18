@@ -77,12 +77,17 @@ h6:hover .heading-permalink {
 /* Remove tailwind's prose backticks */
 .prose :not(pre) code:before,
 .prose :not(pre) code:after {
-    content: "" !important;
+    content: none !important;
 }
 
 /* Inline code blocks */
-.prose :not(pre) code {
+.prose code {
     @apply px-2 bg-gray-300 rounded-md inline-block;
+}
+
+/* Remove inline-block from the inline code blocks to avoid an unnecessary gap at the bottom */
+.prose pre code {
+    @apply px-0 bg-transparent rounded-none block;
 }
 
 del code {
