@@ -5,7 +5,7 @@
     class="bg-white border rounded-md"
     x-data="outputData"
     x-init="extractToc()"
-    {{ $attributes->merge() }}
+    {{ $attributes }}
 >
     <div class="border-b p-4 flex justify-between">
         <x-dashboard-heading-text class="flex items-center">
