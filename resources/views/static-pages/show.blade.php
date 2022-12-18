@@ -2,7 +2,7 @@
 
     <div>
         <x-markdown-output-panel
-            :output="$page->getRenderedOutput()"
+            :output="$renderedOutput"
             :heading="$page->title"
         />
     </div>

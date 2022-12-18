@@ -20,7 +20,8 @@ class StaticPageController extends Controller
     public function show(Request $request, StaticPage $page)
     {
         return view('admin.static-pages.show', [
-            'page' => $page
+            'page' => $page,
+            'renderedOutput' => $page->getRenderedOutput()
         ]);
     }
 
