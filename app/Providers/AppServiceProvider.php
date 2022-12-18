@@ -4,6 +4,10 @@ namespace App\Providers;
 
 use App\Models\StaticPage;
 use App\Settings;
+use Exception;
+use Illuminate\Database\QueryException;
+use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -29,8 +33,9 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        // view()->share('user', auth()->user());
-        view()->share('staticPages', StaticPage::all());
+        if (Schema::hasTable('static_pages')) {
+            view()->share('staticPages', StaticPage::all());
+        }
     }
 
     public function loadHelpers()
