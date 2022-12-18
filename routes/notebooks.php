@@ -2,7 +2,7 @@
 
 use App\Http\Controllers\NotebookController;
 use App\Http\Controllers\NotebookPageController;
-use App\Http\Controllers\Notebooks\BookmarkController;
+// use App\Http\Controllers\Notebooks\BookmarkController;
 use Illuminate\Support\Facades\Route;
 
 Route::middleware(['auth', 'verified'])->group(function () {
@@ -12,7 +12,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::prefix('/notebooks/{notebook}')->as('notebooks.')->group(function () {
         Route::patch('/restore', [NotebookController::class, 'restore'])->name('restore')->withTrashed();
 
-        Route::patch('/bookmark', [BookmarkController::class, 'update'])->name('bookmark.update')->withTrashed();
+        // Route::patch('/bookmark', [BookmarkController::class, 'update'])->name('bookmark.update')->withTrashed();
     });
 
     Route::resource('notebooks.pages', NotebookPageController::class)->withTrashed();

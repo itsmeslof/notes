@@ -2,7 +2,7 @@
     <x-notebooks.heading-text :$notebook />
 
     <div class="flex space-x-2">
-        <x-notebooks.bookmark-button :notebook="$notebook" />
+        {{-- <x-notebooks.bookmark-button :notebook="$notebook" /> --}}
 
         <x-links.secondary
             size="sm"
