@@ -4,7 +4,8 @@
         </h3>
         <p class="text-gray-400 text-sm">
             When enabled, the project home page will be shown with information regarding the project, and links to the
-            github and project website. When disabled, all requests made to the root domain (https://notebook.test) will
+            github and project website. When disabled, all requests made to the root domain ({{ config('app.url') }})
+            will
             redirect to the user dashboard.
         </p>
     </div>
