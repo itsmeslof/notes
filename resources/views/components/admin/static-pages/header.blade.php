@@ -4,7 +4,6 @@
         size="sm"
         href="{{ route('admin.pages.create') }}"
     >
-        <x-svg.plus-icon class="mr-2" />
         New Page
     </x-links.primary>
 </div>

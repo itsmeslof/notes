@@ -19,7 +19,6 @@
             size="sm"
         >
             View Notebook
-            <x-svg.arrow-long-right class="ml-2" />
         </x-links.secondary>
     </div>
 </div>

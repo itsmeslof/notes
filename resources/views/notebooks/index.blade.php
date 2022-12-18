@@ -14,7 +14,6 @@
                 size="sm"
                 href="{{ route('notebooks.create') }}"
             >
-                <x-svg.plus-icon class="mr-2" />
                 New Notebook
             </x-links.primary>
         </div>

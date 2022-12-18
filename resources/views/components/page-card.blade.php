@@ -7,9 +7,9 @@
     <div class="flex flex-col space-y-2">
         <div class="flex justify-between">
             <h2>{{ $page->name }}</h2>
-            {{-- @if ($page->bookmarked)
+            @if ($page->bookmarked)
                 <x-svg.bookmarked-icon class="text-pink-500" />
-            @endif --}}
+            @endif
         </div>
         <p>{{ $page->created_at->diffForHumans() }}</p>
     </div>
@@ -19,7 +19,6 @@
             size="sm"
         >
             View Page
-            <x-svg.arrow-long-right class="ml-2" />
         </x-links.secondary>
     </div>
 </div>
