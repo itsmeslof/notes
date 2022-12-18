@@ -17,7 +17,7 @@ class CheckIfRegistrationEnabled
     public function handle(Request $request, Closure $next)
     {
         if (!settings()->get('enable_user_registration')) {
-            abort(404);
+            return redirect('login');
         }
 
         return $next($request);
