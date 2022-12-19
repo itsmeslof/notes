@@ -16,7 +16,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('index');
-})->middleware('home_page.enabled');
+})->middleware(['guest', 'home_page.enabled']);
 
 require __DIR__ . '/notebooks.php';
 require __DIR__ . '/admin.php';

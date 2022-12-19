@@ -30,9 +30,6 @@
 <body class="font-sans antialiased">
 
     <div class="min-h-screen bg-gray-100 border-t-[6px] border-emerald-600 flex flex-col">
-        @if (auth()->check())
-            @include('layouts.navigation')
-        @endif
 
         <div class="flex justify-center mt-20">
 
@@ -87,28 +84,48 @@
                     </x-links.anchor>
                 </p>
 
+                <div class="mt-10 mb-10 flex justify-center items-center space-x-4">
+                    @if (settings()->get('enable_user_registration'))
+                        <x-links.secondary
+                            size="sm"
+                            :href="route('register')"
+                        >
+                            Create an account
+                        </x-links.secondary>
+                        <p class="text-gray-500 font-medium text-sm">or</p>
+                    @endif
+                    <x-links.primary
+                        size="sm"
+                        :href="route('login')"
+                    >
+                        Login
+                    </x-links.primary>
+                </div>
+                <hr />
+
+
                 <div class="mt-10 flex space-x-4 justify-center">
-                    <x-links.secondary
+                    <x-links.anchor
                         href="https://github.com/itsmeslof/notebook"
                         target="_blank"
                         size="sm"
                     >
                         GitHub Repository
-                    </x-links.secondary>
-                    <x-links.secondary
+                    </x-links.anchor>
+                    <x-links.anchor
                         href="https://github.com/itsmeslof/notebook#Roadmap"
                         target="_blank"
                         size="sm"
                     >
                         Roadmap
-                    </x-links.secondary>
-                    <x-links.secondary
+                    </x-links.anchor>
+                    <x-links.anchor
                         href="https://github.com/itsmeslof/notebook#Installation"
                         target="_blank"
                         size="sm"
                     >
                         Installation
-                    </x-links.secondary>
+                    </x-links.anchor>
                     {{-- <x-links.primary
                         href="#"
                         target="_blank"
