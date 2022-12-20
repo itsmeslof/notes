@@ -5,9 +5,9 @@
         {{-- <x-notebooks.bookmark-button :notebook="$notebook" /> --}}
         <x-links.secondary
             size="sm"
-            :href="route('notebooks.share.create', [$notebook])"
+            :href="route('notebooks.share.index', [$notebook])"
         >
-            Create Share Link
+            Manage Share Links
         </x-links.secondary>
 
         <x-links.secondary

@@ -6,7 +6,7 @@
 
     <x-slot name="header">
         <div class="w-full flex flex-col space-y-4 justify-center items-center">
-            <x-breadcrumbs.notebook-share :$notebook />
+            <x-breadcrumbs.notebook-share-create :$notebook />
             <x-dashboard-heading-text size="2xl">
                 Create a new Share Link
             </x-dashboard-heading-text>
