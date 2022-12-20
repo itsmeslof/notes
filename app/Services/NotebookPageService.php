@@ -23,7 +23,20 @@ class NotebookPageService
 
     public function destroy(NotebookPage $page): void
     {
+        $this->removePageFromShareLinks($page);
         $page->delete();
+    }
+
+    public function removePageFromShareLinks(NotebookPage $page)
+    {
+        $shareLinks = $page->notebook->notebookShareLinks;
+
+        foreach ($shareLinks as $link) {
+            $visiblePageIds = $link->visiblePageIds();
+            if (in_array($page->id, $visiblePageIds)) {
+                $link->removeVisiblePageId($page->id);
+            }
+        }
     }
 
     /**
