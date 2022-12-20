@@ -9,9 +9,9 @@
         {{ $notebook->name }}
     </x-links.anchor>
     <x-breadcrumbs.label>/</x-breadcrumbs.label>
-    <x-breadcrumbs.label>
+    <x-links.anchor href="{{ route('notebooks.share.index', $notebook) }}">
         Share
-    </x-breadcrumbs.label>
+    </x-links.anchor>
     <x-breadcrumbs.label>/</x-breadcrumbs.label>
     <x-breadcrumbs.active-page-label>
         Create
