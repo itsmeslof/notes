@@ -2,7 +2,7 @@
     <div>
         <h3 class="text-gray-600 font-semibold text-lg">{{ $page->title }}</h3>
         <p class="text-gray-400 text-sm">
-            {{ 'https://notebook.test/' . $page->slug }}
+            {{ route('page.show', $page) }}
         </p>
     </div>
     <x-links.secondary
