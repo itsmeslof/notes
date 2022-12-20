@@ -90,4 +90,24 @@
             @endif
         </form>
     </div>
+
+    <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg border border-gray-300 p-8 mt-10 max-w-3xl mx-auto">
+        <h2 class="font-semibold text-2xl text-gray-800 leading-tight">
+            {{ __('Danger Zone') }}
+        </h2>
+        <x-h-divider />
+        <form
+            action="{{ route('notebooks.share.destroy', [$notebook, $shareLink]) }}"
+            method="POST"
+        >
+            @method('DELETE')
+            @csrf
+            <x-buttons.danger>
+                Delete Share Link
+            </x-buttons.danger>
+        </form>
+        <p class="text-sm block mt-6 text-gray-500">
+            Deleting this Share Link will permanently delete it. This can not be undone.
+        </p>
+    </div>
 </x-app-layout>

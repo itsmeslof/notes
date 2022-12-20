@@ -26,6 +26,15 @@ class NotebookShareLinkController extends Controller
         ]);
     }
 
+    public function show(Request $request, NotebookShareLink $notebookShareLink)
+    {
+        return view('shared-notebook.show', [
+            'shareLink' => $notebookShareLink,
+            'notebook' => $notebookShareLink->notebook,
+            'visiblePages' => $notebookShareLink->visiblePages(),
+        ]);
+    }
+
     public function edit(Request $request, Notebook $notebook, NotebookShareLink $notebookShareLink)
     {
         return view('notebooks.share.edit', [
@@ -89,12 +98,11 @@ class NotebookShareLinkController extends Controller
         return redirect()->route('notebooks.share.index', $notebook);
     }
 
-    public function show(Request $request, NotebookShareLink $notebookShareLink)
+    public function destroy(Request $request, Notebook $notebook, NotebookShareLink $notebookShareLink)
     {
-        return view('shared-notebook.show', [
-            'shareLink' => $notebookShareLink,
-            'notebook' => $notebookShareLink->notebook,
-            'visiblePages' => $notebookShareLink->visiblePages(),
-        ]);
+        $notebookShareLink->delete();
+
+        session()->flash('status', 'Share Link deleted!');
+        return redirect()->route('notebooks.share.index', $notebook);
     }
 }
