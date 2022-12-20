@@ -1,8 +1,14 @@
 <div class="flex justify-between items-center">
     <x-notebooks.heading-text :$notebook />
 
-    <div class="flex space-x-2">
+    <div class="flex space-x-2 items-center">
         {{-- <x-notebooks.bookmark-button :notebook="$notebook" /> --}}
+        <x-links.secondary
+            size="sm"
+            :href="route('notebooks.share.create', [$notebook])"
+        >
+            Create Share Link
+        </x-links.secondary>
 
         <x-links.secondary
             size="sm"

@@ -43,6 +43,11 @@ class Notebook extends Model
         return $this->hasMany(NotebookPage::class);
     }
 
+    public function shareLinks(): HasMany
+    {
+        return $this->hasMany(NotebookShareLink::class, 'notebook_id', 'id');
+    }
+
     // Temporary
     public function daysRemaining(): Attribute
     {
