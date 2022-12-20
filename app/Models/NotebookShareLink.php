@@ -47,4 +47,20 @@ class NotebookShareLink extends Model
         $pageIds = $this->visiblePageIds();
         return $this->notebook->pages()->whereIn('id', $pageIds)->get();
     }
+
+    public function removeVisiblePageId($pageId)
+    {
+        $newPageData = [
+            'visible_pages' => array_values(
+                array_filter(
+                    $this->visiblePageIds(),
+                    fn ($e) => strval($e) !== strval($pageId)
+                )
+            )
+        ];
+
+        $this->update([
+            'page_data' => $newPageData
+        ]);
+    }
 }
