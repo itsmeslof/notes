@@ -12,6 +12,7 @@ Laravel Notebook is a self-hosted app to manage personal notebooks using Markdow
 -   Support for ==marker highlighting==
 -   Heading permalinks & automatic table of contents
 -   Support for footnote linking
+-   Create shareable links to a Notebook with the ability to specify individual pages that should be visible
 
 ---
 
@@ -20,10 +21,10 @@ Laravel Notebook is a self-hosted app to manage personal notebooks using Markdow
 > :warning: This project is still in development and may introduce breaking changes
 
 -   [ ] Live demo
--   [ ] Shareable notebooks and pages
+-   [x] Shareable notebooks and pages - added in [`89bf324`](https://github.com/itsmeslof/notebook/commit/89bf32459bd321621a28dba43d26de0e0f5c5101) - `2022-12-20`
 
-    -   [ ] Ability to specify which pages should be visible in this shareable link
-    -   [ ] Ability to share individual pages without exposing the parent notebook
+    -   [x] Ability to specify which pages should be visible in the share links
+    -   [x] Ability to hide the name of the Notebook
 
 -   [ ] Notebook passcodes with intervals
 -   [ ] Notebook and page archiving
