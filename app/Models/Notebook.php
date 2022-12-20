@@ -43,7 +43,7 @@ class Notebook extends Model
         return $this->hasMany(NotebookPage::class);
     }
 
-    public function shareLinks(): HasMany
+    public function notebookShareLinks(): HasMany
     {
         return $this->hasMany(NotebookShareLink::class, 'notebook_id', 'id');
     }

@@ -17,6 +17,8 @@ Route::middleware(['auth', 'verified'])->group(function () {
         Route::get('/share', [NotebookShareLinkController::class, 'index'])->name('share.index');
         Route::get('/share/create', [NotebookShareLinkController::class, 'create'])->name('share.create');
         Route::post('/share', [NotebookShareLinkController::class, 'store'])->name('share.store');
+        Route::get('/share/{notebook_share_link:hashid}/edit', [NotebookShareLinkController::class, 'edit'])->name('share.edit');
+        Route::put('/share/{notebook_share_link:hashid}', [NotebookShareLinkController::class, 'update'])->name('share.update');
 
         // Route::patch('/bookmark', [BookmarkController::class, 'update'])->name('bookmark.update')->withTrashed();
     });

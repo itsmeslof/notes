@@ -13,18 +13,25 @@ class NotebookShareLinkController extends Controller
 {
     public function index(Request $request, Notebook $notebook)
     {
-        $notebook->load('pages');
         return view('notebooks.share.index', [
             'notebook' => $notebook,
-            'activeShareLinks' => $notebook->shareLinks,
+            'activeShareLinks' => $notebook->notebookShareLinks,
         ]);
     }
 
     public function create(Request $request, Notebook $notebook)
     {
-        $notebook->load('pages');
         return view('notebooks.share.create', [
             'notebook' => $notebook,
+        ]);
+    }
+
+    public function edit(Request $request, Notebook $notebook, NotebookShareLink $notebookShareLink)
+    {
+        return view('notebooks.share.edit', [
+            'shareLink' => $notebookShareLink,
+            'visiblePageIds' => $notebookShareLink->visiblePageIds(),
+            'notebook' => $notebookShareLink->notebook,
         ]);
     }
 
@@ -53,6 +60,32 @@ class NotebookShareLinkController extends Controller
         ]);
 
         session()->flash('status', 'Share link created!');
+        return redirect()->route('notebooks.share.index', $notebook);
+    }
+
+    public function update(Request $request, Notebook $notebook, NotebookShareLink $notebookShareLink)
+    {
+        $validated = $request->validate([
+            'active_pages' => ['required', 'array'],
+            'active_pages.*' => [
+                'required',
+                'numeric',
+                Rule::exists('notebook_pages', 'id')
+                    ->where('notebook_id', $notebook->id)
+            ],
+            'hide_notebook_name' => ['required', 'boolean'],
+        ]);
+
+        $pageData = [
+            'visible_pages' => $validated['active_pages']
+        ];
+
+        $notebookShareLink->update([
+            'page_data' => $pageData,
+            'hide_notebook_name' => $validated['hide_notebook_name']
+        ]);
+
+        session()->flash('status', 'Share link updated!');
         return redirect()->route('notebooks.share.index', $notebook);
     }
 

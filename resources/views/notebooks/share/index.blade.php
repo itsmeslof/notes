@@ -22,7 +22,10 @@
             Active Share Links
         </x-dashboard-heading-text>
 
-        <x-notebooks.share.active-links-list :$activeShareLinks />
+        <x-notebooks.share.active-links-list
+            :$notebook
+            :$activeShareLinks
+        />
     </div>
 
 </x-app-layout>

@@ -1,4 +1,4 @@
-@props(['shareLink'])
+@props(['notebook', 'shareLink'])
 
 <div class="bg-white border border-gray-300 rounded-md p-4 flex justify-between space-x-10 items-center">
     <div class="space-y-2">
@@ -20,7 +20,7 @@
         </p>
     </div>
     <x-links.secondary
-        href="{{ route('shared-notebook.show', $shareLink) }}"
+        href="{{ route('notebooks.share.edit', [$notebook, $shareLink]) }}"
         size="sm"
     >
         Manage Share Link
