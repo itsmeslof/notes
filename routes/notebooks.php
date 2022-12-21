@@ -9,10 +9,10 @@ use Illuminate\Support\Facades\Route;
 
 Route::middleware(['auth', 'verified'])->group(function () {
 
-    Route::resource('notebooks', NotebookController::class)->withTrashed();
+    Route::resource('notebooks', NotebookController::class);
 
     Route::prefix('/notebooks/{notebook}')->as('notebooks.')->group(function () {
-        Route::patch('/restore', [NotebookController::class, 'restore'])->name('restore')->withTrashed();
+        Route::patch('/restore', [NotebookController::class, 'restore'])->name('restore');
 
         Route::get('/share', [NotebookShareLinkController::class, 'index'])->name('share.index');
         Route::get('/share/create', [NotebookShareLinkController::class, 'create'])->name('share.create');
@@ -24,10 +24,10 @@ Route::middleware(['auth', 'verified'])->group(function () {
         // Route::patch('/bookmark', [BookmarkController::class, 'update'])->name('bookmark.update')->withTrashed();
     });
 
-    Route::resource('notebooks.pages', NotebookPageController::class)->withTrashed();
+    Route::resource('notebooks.pages', NotebookPageController::class);
 
     Route::prefix('/notebooks/{notebook}/pages/{page}')->as('notebooks.pages.')->group(function () {
-        Route::patch('/restore', [NotebookPageController::class, 'restore'])->name('restore')->withTrashed();
+        Route::patch('/restore', [NotebookPageController::class, 'restore'])->name('restore');
     });
 });
 

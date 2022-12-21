@@ -21,13 +21,10 @@ class NotebookController extends Controller
      */
     public function index(Request $request)
     {
-        $notebooks = $request->user()->notebooks()->withTrashed()->get();
+        $notebooks = $request->user()->notebooks()->get();
 
         return view('notebooks.index', [
-            'allNotebooks' => $notebooks->whereNull('deleted_at'),
-            'bookmarkedNotebooks' => $notebooks->whereNull('deleted_at')->where('bookmarked', true),
-            'archivedNotebooks' => [], // TODO
-            'trashedNotebooks' => $notebooks->whereNotNull('deleted_at'),
+            'allNotebooks' => $notebooks
         ]);
     }
 

@@ -22,7 +22,6 @@ return new class extends Migration
             $table->string('hashid')->nullable();
             $table->foreignIdFor(Notebook::class)->constrained()->onDelete('cascade');
             $table->timestamps();
-            $table->softDeletes();
         });
     }
 

@@ -7,11 +7,10 @@ use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Illuminate\Database\Eloquent\SoftDeletes;
 
 class NotebookPage extends Model
 {
-    use HasFactory, SoftDeletes, HasHashID;
+    use HasFactory, HasHashID;
 
     public function generateHashIDFromFields(): array
     {
@@ -48,7 +47,7 @@ class NotebookPage extends Model
      */
     public function notebook(): BelongsTo
     {
-        return $this->belongsTo(Notebook::class)->withTrashed();
+        return $this->belongsTo(Notebook::class);
     }
 
     // Temporary

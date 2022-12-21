@@ -16,13 +16,11 @@
         >
             Notebook Settings
         </x-links.secondary>
-        @if (!$notebook->trashed())
-            <x-links.primary
-                size="sm"
-                href="{{ route('notebooks.pages.create', $notebook) }}"
-            >
-                New Page
-            </x-links.primary>
-        @endif
+        <x-links.primary
+            size="sm"
+            href="{{ route('notebooks.pages.create', $notebook) }}"
+        >
+            New Page
+        </x-links.primary>
     </div>
 </div>

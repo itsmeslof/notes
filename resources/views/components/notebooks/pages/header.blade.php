@@ -15,14 +15,12 @@
             >
                 Page Settings
             </x-links.secondary>
-            @if (!$page->trashed())
-                <x-buttons.primary
-                    size="sm"
-                    @click="$dispatch('enter-edit-mode')"
-                >
-                    Edit Page Content
-                </x-buttons.primary>
-            @endif
+            <x-buttons.primary
+                size="sm"
+                @click="$dispatch('enter-edit-mode')"
+            >
+                Edit Page Content
+            </x-buttons.primary>
         </div>
 
         <div

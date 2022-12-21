@@ -1,9 +1,6 @@
 <x-app-layout>
 
     <x-slot name="alerts">
-        @if ($notebook->trashed())
-            <x-notebooks.trashed-alert :$notebook />
-        @endif
         <x-alerts />
     </x-slot>
 

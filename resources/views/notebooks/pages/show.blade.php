@@ -5,16 +5,6 @@
 >
 
     <x-slot name="alerts">
-        @if ($notebook->trashed())
-            <x-notebooks.pages.notebook-trashed-alert :$notebook />
-        @endif
-
-        @if ($page->trashed())
-            <x-notebooks.pages.trashed-alert
-                :$notebook
-                :$page
-            />
-        @endif
         <x-alerts />
     </x-slot>
 

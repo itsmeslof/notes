@@ -22,7 +22,6 @@ return new class extends Migration
             $table->boolean('archived')->default(false);
             $table->foreignIdFor(User::class)->constrained()->onDelete('cascade');
             $table->timestamps();
-            $table->softDeletes();
         });
     }
 

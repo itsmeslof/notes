@@ -45,9 +45,9 @@ class NotebookPageController extends Controller
     {
         $this->authorize('update', $notebook);
 
-        if ($notebook->trashed()) {
-            return back()->withErrors('You can not create a page for this notebook while it is trashed.');
-        }
+        // if ($notebook->trashed()) {
+        //     return back()->withErrors('You can not create a page for this notebook while it is trashed.');
+        // }
 
         return view('notebooks.pages.create', [
             'notebook' => $notebook
