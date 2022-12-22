@@ -73,7 +73,7 @@
                 @endforelse
             </div>
 
-            <div
+            {{-- <div
                 class="grid grid-cols-3 gap-4"
                 x-show="activeTab === 'bookmarks'"
             >
@@ -110,7 +110,7 @@
                         No notebooks found
                     </div>
                 @endforelse
-            </div>
+            </div> --}}
         </div>
 
     </div>
