@@ -12,7 +12,7 @@
                         Site Settings
                     </x-nav-link>
                     <x-nav-link
-                        href="#"
+                        href="{{ route('admin.users.index') }}"
                         :active="request()->routeIs('admin.users.index')"
                     >
                         Manage Users
