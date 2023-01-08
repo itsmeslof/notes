@@ -20,6 +20,7 @@ Route::get('/', function () {
 
 require __DIR__ . '/notebooks.php';
 require __DIR__ . '/admin.php';
+require __DIR__ . '/account.php';
 require __DIR__ . '/auth.php';
 
 Route::get('/pages/{page:slug}', [StaticPageController::class, 'show'])->name('page.show');

@@ -16,7 +16,7 @@
                         My Notebooks
                     </x-nav-link>
                     <x-nav-link
-                        href="#"
+                        href="{{ route('account.edit') }}"
                         :active="request()->routeIs('account.edit')"
                     >
                         <x-svg.user-icon class="mr-2" />
