@@ -18,7 +18,7 @@ return new class extends Migration
         Schema::create('notebook_pages', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->text('content')->default('');
+            $table->text('content');
             $table->string('hashid')->nullable();
             $table->foreignIdFor(Notebook::class)->constrained()->onDelete('cascade');
             $table->timestamps();
