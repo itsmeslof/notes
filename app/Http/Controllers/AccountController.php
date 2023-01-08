@@ -23,6 +23,8 @@ class AccountController extends Controller
             'email' => ['required', 'email', Rule::unique('users')->ignore($user->id)],
         ]);
 
+        $user->update($validated);
+
         session()->flash('status', 'Account updated!');
         return redirect()->route('account.edit');
     }
