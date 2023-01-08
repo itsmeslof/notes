@@ -33,9 +33,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        if (Schema::hasTable('static_pages')) {
-            view()->share('staticPages', StaticPage::all());
-        }
+        //
     }
 
     public function loadHelpers()
