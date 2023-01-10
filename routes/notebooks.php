@@ -7,7 +7,7 @@ use App\Http\Controllers\SharedNotebook\PageController as SharedNotebookPageCont
 // use App\Http\Controllers\Notebooks\BookmarkController;
 use Illuminate\Support\Facades\Route;
 
-Route::middleware(['auth', 'verified'])->group(function () {
+Route::middleware(['auth'])->group(function () {
 
     Route::resource('notebooks', NotebookController::class);
 
