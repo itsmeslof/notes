@@ -93,6 +93,8 @@ class Setup extends Command
             return;
         }
 
+        $this->info('Settings file: ' . $settingsFilePath . ' - does NOT exist!');
+
         $defaultSettings = [
             'enable_user_registration' => false,
             'show_home_page' => true
