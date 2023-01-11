@@ -86,7 +86,7 @@ class Setup extends Command
 
     private function createDefaultSettingsFile()
     {
-        $settingsFilePath = storage_path('app\\settings.json');
+        $settingsFilePath = storage_path('app//settings.json');
 
         if (file_exists($settingsFilePath)) {
             $this->info('Settings file already exists, skipping.');
