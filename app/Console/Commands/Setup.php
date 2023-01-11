@@ -62,7 +62,7 @@ class Setup extends Command
 
     private function createDefaultMarkdownGuide()
     {
-        $mdGuidePath = base_path() . '\\MarkdownGuide.md';
+        $mdGuidePath = base_path() . '//MarkdownGuide.md';
 
         if (StaticPage::where('slug', 'markdown-guide')->first()) {
             $this->info('Markdown Guide already exists, skipping.');
@@ -92,8 +92,6 @@ class Setup extends Command
             $this->info('Settings file already exists, skipping.');
             return;
         }
-
-        $this->info('Settings file: ' . $settingsFilePath . ' - does NOT exist!');
 
         $defaultSettings = [
             'enable_user_registration' => false,
