@@ -62,7 +62,7 @@ class Setup extends Command
 
     private function createDefaultMarkdownGuide()
     {
-        $mdGuidePath = base_path() . '\\MarkdownGuide.md';
+        $mdGuidePath = base_path() . '//MarkdownGuide.md';
 
         if (StaticPage::where('slug', 'markdown-guide')->first()) {
             $this->info('Markdown Guide already exists, skipping.');
@@ -86,7 +86,7 @@ class Setup extends Command
 
     private function createDefaultSettingsFile()
     {
-        $settingsFilePath = storage_path('app\\settings.json');
+        $settingsFilePath = storage_path('app//settings.json');
 
         if (file_exists($settingsFilePath)) {
             $this->info('Settings file already exists, skipping.');
