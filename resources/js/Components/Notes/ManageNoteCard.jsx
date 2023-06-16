@@ -15,11 +15,6 @@ export default function ManageNotecard({ note, ...props }) {
                     </StandardLink>
                 </li>
                 <li>
-                    <StandardLink href={route("notes.settings.show", note)}>
-                        Note Settings
-                    </StandardLink>
-                </li>
-                <li>
                     <StandardLink href={route("notes.delete.show", note)}>
                         Delete Note
                     </StandardLink>

@@ -4,7 +4,6 @@ import NoteDetails from "@/Components/Notes/NoteDetails";
 import StandardLink from "@/Components/StandardLink";
 // import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout";
 import { Head } from "@inertiajs/react";
-import TableOfContents from "@/Components/Notes/TableOfContents";
 
 export default function Show({ errors, flash, auth, note, outputHtml, toc }) {
     return (
@@ -48,7 +47,6 @@ export default function Show({ errors, flash, auth, note, outputHtml, toc }) {
             </div>
 
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-                {toc && <TableOfContents toc={toc} />}
                 <RenderNote outputHtml={outputHtml} />
             </div>
         </div>
