@@ -2,7 +2,6 @@
 
 use App\Http\Controllers\NoteController;
 use App\Http\Controllers\Notes\DeleteController;
-use App\Http\Controllers\Notes\SettingsController;
 use Illuminate\Support\Facades\Route;
 
 Route::middleware('auth')->prefix('notes')->as('notes.')->group(function () {
@@ -15,9 +14,6 @@ Route::middleware('auth')->prefix('notes')->as('notes.')->group(function () {
 
     Route::get('/{note:hashid}/delete', [DeleteController::class, 'show'])->name('delete.show');
     Route::delete('/{note:hashid}/delete', [DeleteController::class, 'destroy'])->name('delete.confirm');
-
-    Route::get('/{note:hashid}/settings', [SettingsController::class, 'show'])->name('settings.show');
-    Route::patch('/{note:hashid}/settings', [SettingsController::class, 'update'])->name('settings.update');
 });
 
 
