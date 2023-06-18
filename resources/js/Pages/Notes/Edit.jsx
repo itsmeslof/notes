@@ -1,9 +1,10 @@
 import MarkdownEditor from "@/Components/MarkdownEditor";
+import MaxWidthContainer from "@/Components/MaxWidthContainer";
 import StandardLink from "@/Components/StandardLink";
 import { Head, useForm } from "@inertiajs/react";
 
 export default function Edit({ auth, note }) {
-    const { data, setData, put, processing, errors } = useForm({
+    const { setData, put, errors } = useForm({
         content: note.content,
     });
 
@@ -21,7 +22,7 @@ export default function Edit({ auth, note }) {
                 title={"Editing " + note.metadata?.title || "Untitled Note"}
             />
 
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+            <MaxWidthContainer classes="py-10">
                 <StandardLink href="/">
                     <svg
                         xmlns="http://www.w3.org/2000/svg"
@@ -64,7 +65,7 @@ export default function Edit({ auth, note }) {
                         onChange={onChange}
                     />
                 </section>
-            </div>
+            </MaxWidthContainer>
         </div>
     );
 }

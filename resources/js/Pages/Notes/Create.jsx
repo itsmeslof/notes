@@ -1,4 +1,5 @@
 import MarkdownEditor from "@/Components/MarkdownEditor";
+import MaxWidthContainer from "@/Components/MaxWidthContainer";
 import StandardLink from "@/Components/StandardLink";
 import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout";
 import { defaultNoteContent } from "@/utils";
@@ -21,7 +22,7 @@ export default function Create({ auth }) {
         <AuthenticatedLayout hideTopNav={true}>
             <Head title="Create a new Note" />
 
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+            <MaxWidthContainer classes="py-10">
                 <StandardLink href="/">
                     <svg
                         xmlns="http://www.w3.org/2000/svg"
@@ -64,7 +65,7 @@ export default function Create({ auth }) {
                         onChange={onChange}
                     />
                 </section>
-            </div>
+            </MaxWidthContainer>
         </AuthenticatedLayout>
     );
 }

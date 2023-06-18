@@ -1,3 +1,4 @@
+import MaxWidthContainer from "@/Components/MaxWidthContainer";
 import StandardLink from "@/Components/StandardLink";
 import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout";
 import { Head } from "@inertiajs/react";
@@ -31,7 +32,7 @@ export default function Dashboard({ auth, recentNotes }) {
             <Head title="Dashboard" />
 
             <div className="py-12">
-                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <MaxWidthContainer>
                     <h2 className="text-neutral-100 text-2xl font-bold">
                         Links on this page:
                     </h2>
@@ -78,7 +79,7 @@ export default function Dashboard({ auth, recentNotes }) {
                     <ul className="list-disc list-inside mt-4 ml-4">
                         {recentNotesList()}
                     </ul>
-                </div>
+                </MaxWidthContainer>
             </div>
         </AuthenticatedLayout>
     );

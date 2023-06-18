@@ -2,12 +2,13 @@ import ManageNotecard from "@/Components/Notes/ManageNoteCard";
 import RenderNote from "@/Components/Notes/RenderNote";
 import NoteDetails from "@/Components/Notes/NoteDetails";
 import StandardLink from "@/Components/StandardLink";
-// import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout";
+import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout";
 import { Head } from "@inertiajs/react";
+import MaxWidthContainer from "@/Components/MaxWidthContainer";
 
 export default function Show({ errors, flash, auth, note, outputHtml, toc }) {
     return (
-        <div className="min-h-screen bg-neutral-100 dark:bg-neutral-900 dark:text-neutral-400">
+        <AuthenticatedLayout>
             <Head title={note.metadata?.title || "Untitled Note"} />
 
             <div className="bg-black/10 border-b-2 border-neutral-800">
@@ -46,9 +47,9 @@ export default function Show({ errors, flash, auth, note, outputHtml, toc }) {
                 </div>
             </div>
 
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+            <MaxWidthContainer classes="py-12">
                 <RenderNote outputHtml={outputHtml} />
-            </div>
-        </div>
+            </MaxWidthContainer>
+        </AuthenticatedLayout>
     );
 }

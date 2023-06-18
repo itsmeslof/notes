@@ -1,5 +1,7 @@
 import DangerButton from "@/Components/DangerButton";
+import MaxWidthContainer from "@/Components/MaxWidthContainer";
 import StandardLink from "@/Components/StandardLink";
+import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout";
 import { Head, router } from "@inertiajs/react";
 
 export default function Delete({ auth, note }) {
@@ -8,14 +10,14 @@ export default function Delete({ auth, note }) {
     }
 
     return (
-        <div className="min-h-screen bg-neutral-100 dark:bg-neutral-900 dark:text-neutral-400">
+        <AuthenticatedLayout>
             <Head
                 title={
                     "Delete Note - " + note.metadata?.title || "Untitled Note"
                 }
             />
 
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+            <MaxWidthContainer classes="py-10">
                 <StandardLink href="/">
                     <svg
                         xmlns="http://www.w3.org/2000/svg"
@@ -48,7 +50,7 @@ export default function Delete({ auth, note }) {
                         Acknowledge and delete note
                     </DangerButton>
                 </div>
-            </div>
-        </div>
+            </MaxWidthContainer>
+        </AuthenticatedLayout>
     );
 }
