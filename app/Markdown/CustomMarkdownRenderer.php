@@ -6,6 +6,7 @@ use League\CommonMark\Environment\Environment;
 use League\CommonMark\Extension\CommonMark\CommonMarkCoreExtension;
 use League\CommonMark\Extension\CommonMark\Node\Block\FencedCode;
 use League\CommonMark\Extension\CommonMark\Node\Block\IndentedCode;
+use League\CommonMark\Extension\ExternalLink\ExternalLinkExtension;
 use League\CommonMark\Extension\FrontMatter\FrontMatterExtension;
 use League\CommonMark\Extension\FrontMatter\Output\RenderedContentWithFrontMatter;
 use League\CommonMark\Extension\GithubFlavoredMarkdownExtension;
@@ -16,12 +17,13 @@ use Spatie\CommonMarkHighlighter\IndentedCodeRenderer;
 
 class CustomMarkdownRenderer
 {
-    private $config = CustomMarkdownConfig::OPTIONS;
+    private $config = [];
     private MarkdownConverter $markdownConverter;
     private Environment $environment;
 
     public function __construct()
     {
+        $this->config = CustomMarkdownConfig::options();
         $this->environment = new Environment($this->config);
         $this->configureExtensions();
         $this->configureRenderers();
@@ -32,6 +34,7 @@ class CustomMarkdownRenderer
     {
         $this->environment->addExtension(new CommonMarkCoreExtension());
         $this->environment->addExtension(new GithubFlavoredMarkdownExtension());
+        $this->environment->addExtension(new ExternalLinkExtension());
         $this->environment->addExtension(new HeadingPermalinkExtension());
         $this->environment->addExtension(new FrontMatterExtension());
     }
