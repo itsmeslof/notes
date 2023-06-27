@@ -19,6 +19,7 @@ return new class extends Migration
             $table->foreignIdFor(User::class)->constrained()->onDelete('cascade');
             $table->json('metadata')->nullable();
             $table->timestamps();
+            $table->timestamp('last_viewed_at')->nullable();
         });
     }
 
