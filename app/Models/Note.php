@@ -65,4 +65,9 @@ class Note extends Model
     {
         return HashidOptions::from('notes', [$this->id, $this->user_id]);
     }
+
+    public function viewed()
+    {
+        $this->touch('last_viewed_at');
+    }
 }

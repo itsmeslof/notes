@@ -31,6 +31,7 @@ class NoteController extends Controller
     public function show(Request $request, Note $note)
     {
         $parseResult = $this->noteService->render($note->content);
+        $note->viewed();
 
         return Inertia::render('Notes/Show', [
             'note' => $note,

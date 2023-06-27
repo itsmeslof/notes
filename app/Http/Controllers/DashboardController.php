@@ -13,8 +13,9 @@ class DashboardController extends Controller
         $recentNotes = $request
             ->user()
             ->notes()
-            ->latest()
-            ->limit(10)
+            ->whereNotNull('last_viewed_at')
+            ->orderBy('last_viewed_at', 'DESC')
+            ->limit(4)
             ->get();
 
         return Inertia::render('Dashboard', [
