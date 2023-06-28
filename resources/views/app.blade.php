@@ -11,7 +11,7 @@
         content="width=device-width, initial-scale=1"
     >
 
-    <title inertia>{{ config('app.name', 'Laravel') }}</title>
+    <title inertia>{{ config('app.name', 'Notes') }}</title>
 
     <!-- Fonts -->
     <link
