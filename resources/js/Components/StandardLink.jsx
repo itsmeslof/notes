@@ -5,7 +5,7 @@ export default function StandardLink({ className = "", children, ...props }) {
         <Link
             {...props}
             className={
-                "text-neutral-300 hover:text-neutral-100 underline inline-flex items-center transition duration-150 ease-in-out focus:outline-none " +
+                "text-lg font-semibold text-sky-500 hover:text-sky-300 hover:underline inline-flex items-center transition duration-150 ease-in-out focus:outline-none " +
                 className
             }
         >

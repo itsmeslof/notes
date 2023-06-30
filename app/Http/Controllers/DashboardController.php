@@ -14,6 +14,7 @@ class DashboardController extends Controller
             ->user()
             ->notes()
             ->whereNotNull('last_viewed_at')
+            ->where('last_viewed_at', '>', now()->subDays(14)->endOfDay())
             ->orderBy('last_viewed_at', 'DESC')
             ->limit(4)
             ->get();
