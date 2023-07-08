@@ -7,10 +7,7 @@ export default function Authenticated({ children }) {
         let links = document.querySelectorAll("#output a");
         for (let i = 0; i < links.length; i++) {
             links[i].onclick = (e) => {
-                if (
-                    e.target.origin === app_origin &&
-                    e.target.hash[0] !== "#"
-                ) {
+                if (e.target.origin === app_origin && !e.target.hash) {
                     e.preventDefault();
                     router.visit(e.target.href);
                 }
