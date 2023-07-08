@@ -5,14 +5,18 @@ export default function Authenticated({ children }) {
     const { app_origin } = usePage().props;
     useEffect(() => {
         let links = document.querySelectorAll("#output a");
-        for (let i = 0; i < links.length; i++) {
-            links[i].onclick = (e) => {
-                if (e.target.origin === app_origin && !e.target.hash) {
-                    e.preventDefault();
-                    router.visit(e.target.href);
+        links.forEach((link) => {
+            link.addEventListener("click", (e) => {
+                const origin = e.target.origin;
+                const hash = e.target.hash;
+                if (!(origin === app_origin) || hash) {
+                    return;
                 }
-            };
-        }
+
+                e.preventDefault();
+                router.visit(e.target.href);
+            });
+        });
     }, []);
     return (
         <>
