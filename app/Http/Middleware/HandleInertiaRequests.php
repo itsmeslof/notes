@@ -41,7 +41,8 @@ class HandleInertiaRequests extends Middleware
             },
             'flash' => [
                 'status' => fn () => $request->session()->get('status')
-            ]
+            ],
+            'app_origin' => config('app.url', 'http://notes.test'),
         ]);
     }
 }
