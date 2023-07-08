@@ -3,6 +3,7 @@ import { useEffect } from "react";
 
 export default function Authenticated({ children }) {
     const { app_origin } = usePage().props;
+
     useEffect(() => {
         let links = document.querySelectorAll("#output a");
         links.forEach((link) => {
@@ -18,6 +19,7 @@ export default function Authenticated({ children }) {
             });
         });
     }, []);
+
     return (
         <>
             <div className="min-h-screen bg-neutral-900 text-neutral-400">
