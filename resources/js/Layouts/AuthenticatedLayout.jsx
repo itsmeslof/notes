@@ -5,19 +5,28 @@ export default function Authenticated({ children }) {
     const { app_origin } = usePage().props;
 
     useEffect(() => {
-        let links = document.querySelectorAll("#output a");
-        links.forEach((link) => {
-            link.addEventListener("click", (e) => {
-                const origin = e.target.origin;
-                const hash = e.target.hash;
-                if (!(origin === app_origin) || hash) {
-                    return;
-                }
+        function onLinkClick(e) {
+            const sameOrigin = e.target.origin === app_origin;
+            const samePath = e.target.pathname === window.location.pathname;
+            const hashFragment = e.target.hash;
 
-                e.preventDefault();
-                router.visit(e.target.href);
-            });
-        });
+            if (!sameOrigin || (hashFragment && samePath)) return;
+
+            e.preventDefault();
+            router.visit(e.target.href);
+        }
+
+        const allAnchors = [...document.querySelectorAll("#output a")];
+        allAnchors.forEach((anchor) =>
+            anchor.addEventListener("click", onLinkClick)
+        );
+
+        return () => {
+            const allAnchors = [...document.querySelectorAll("#output a")];
+            allAnchors.forEach((anchor) =>
+                anchor.removeEventListener("click", onLinkClick)
+            );
+        };
     }, []);
 
     return (
