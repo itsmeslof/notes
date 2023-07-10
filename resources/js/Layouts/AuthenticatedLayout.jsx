@@ -1,4 +1,5 @@
 import { router, usePage } from "@inertiajs/react";
+import { shouldIntercept } from "@inertiajs/core";
 import { useEffect } from "react";
 
 export default function Authenticated({ children }) {
@@ -10,10 +11,11 @@ export default function Authenticated({ children }) {
             const samePath = e.target.pathname === window.location.pathname;
             const hashFragment = e.target.hash;
 
+            if (!shouldIntercept(e)) return;
             if (!sameOrigin || (hashFragment && samePath)) return;
 
             e.preventDefault();
-            router.visit(e.target.href);
+            router.get(e.target.href);
         }
 
         const allAnchors = [...document.querySelectorAll("#output a")];
