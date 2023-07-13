@@ -2,10 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-.prose {
-    max-width: 100% !important;
-}
-
 .hljs {
     color: #abb2bf;
     /* background: #282c34; */
@@ -116,4 +112,11 @@ blockquote h4,
 blockquote h5,
 blockquote h6 {
     margin: 0px !important;
+}
+#output *:not(pre) > code {
+    @apply rounded-md bg-neutral-700 py-0 px-2 inline-block;
+}
+#output *:not(pre) > code::before,
+#output *:not(pre) > code::after {
+    content: "";
 }
